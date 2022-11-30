@@ -64,6 +64,7 @@ body {
   will-change: transform;
   background-size: cover;
   z-index: 1;
+  overflow: hidden;
 }
 
 .Board{
@@ -150,9 +151,9 @@ body{
 .hint{
   background: rgba(0,0,0,.40);
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  margin: 20px;
+  width: 15px;
+  height: 15px;
+  margin: 25px;
   z-index: 0;
 }
 
