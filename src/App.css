@@ -61,7 +61,6 @@ body {
   position: absolute;
   touch-action: none;
   width: 62.5px;
-  will-change: transform;
   background-size: cover;
   z-index: 1;
   overflow: hidden;
@@ -75,6 +74,7 @@ body {
   background-image: url('https://images.chesscomfiles.com/chess-themes/boards/brown/150.png');
   background-size: cover;
   margin: 0px auto;
+  overflow: hidden;
 }
 
 body{
