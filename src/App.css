@@ -1,0 +1,167 @@
+:root{
+  --boardControlsWidth: calc(var(--gutter)*2);
+    --boardControlsHeight: calc(var(--gutterBoardToTopPlayer) + var(--playerHeight) + var(--boardHeight));
+    --boardMaxHeight: (100vh - var(--judoHeight) - var(--boardTopGutter) - var(--playersHeight) - var(--gutterTopPlayerToJudo) - var(--gutter) - var(--gutterBoardToBottomPlayer) - var(--gutterBoardToTopPlayer) - var(--gutterBottomPlayerToAnalysis) - var(--analysisHeight)) /var(--boardHeightToWidthRatio);
+    --boardMaxWidthWithPieces: 100vw - var(--verticalNavWidth) - var(--gutterBoardToNav) - var(--gutter) - var(--boardControlsWidth) - var(--gutterLeftOfBoard) - var(--evalWidth) - var(--sidebarMinWidth) - var(--adWidth) - var(--extraColumnLeftOfBoard,0rem);
+    --gutterBoardToNav: 1.2rem;
+    --horizontalNavHeight: 0rem;
+    --verticalNavWidth: var(--navWidth,14.5rem);
+    display: grid;
+    grid-template-columns: [left-gutter] 1fr [extra-left] var(--extraColumnLeftOfBoard,0) [board-layout] min-content [sidebar] minmax(var(--sidebarMinWidth),var(--sidebarMaxWidth)) [right-gutter] 1fr [ad] var(--adWidth) [videos] var(--videoWidth) [extraneous-dom] 0;
+    grid-template-rows: [top] var(--boardRowHeight) [bottom] auto;
+}
+body {
+    --boardContainerWidth: max(var(--boardMinWidth),min(var(--boardMaxWidth),var(--boardMaxHeight)));
+    --boardHeight: calc(var(--boardWidth)*var(--boardHeightToWidthRatio));
+    --boardHeightToWidthRatio: 1;
+    --boardMaxHeight: (100vh - var(--judoHeight) - var(--boardTopGutter) - var(--horizontalNavHeight) - var(--playersHeight) - var(--gutterTopPlayerToJudo) - var(--gutter) - var(--gutterBoardToBottomPlayer) - var(--gutterBoardToTopPlayer)) /var(--boardHeightToWidthRatio);
+    --boardMaxWidthSansOverride: var(--boardMaxWidthWithPieces) - var(--piecesWidth);
+    --boardMaxWidth: min(var(--boardMaxWidthSansOverride),var(--modifiedBoardWidth,var(--boardMaxWidthSansOverride)));
+    --boardMaxWidthWithPieces: 100vw - var(--gutter) * 2 - var(--gutterLeftOfBoard) - var(--evalWidth);
+    --boardMinWidth: 26.4rem;
+    --boardRowHeight: max(calc(100vh - var(--gutter) - var(--gutterTopPlayerToJudo) - var(--judoHeight) - var(--boardTopGutter) - var(--horizontalNavHeight)),var(--sidebarMinHeight));
+    --shf: 4.9406564584124654e-324;
+    --divisibleBy: 8;
+    --subtractFrom: (0.05rem - 1e-10rem);
+    --boardWidth: calc(((((var(--boardContainerWidth)/var(--divisibleBy)) - var(--subtractFrom))*var(--shf))/var(--shf))*var(--divisibleBy));
+    --evalWidth: 0rem;
+    --gutterBoardToNav: var(--gutter);
+    --gutterBoardToTopPlayer: 0rem;
+    --gutterBoardToBottomPlayer: 0rem;
+    --gutterBottomPlayerToAnalysis: 0rem;
+    --gutterLeftOfBoard: 0rem;
+    --boardControlsWidth: 0rem;
+    --piecesWidth: 0rem;
+    --playerHeight: 0rem;
+    --playersHeight: calc(var(--playerHeight)*2);
+    --adWidth: 0rem;
+    --analysisHeight: 0rem;
+    --boardTopGutter: 0rem;
+    --evalAndGutter: calc(var(--gutterLeftOfBoard) + var(--evalWidth));
+    --gutter: 1.6rem;
+    --gutterSmall: 1rem;
+    --gutterTopPlayerToJudo: var(--gutter);
+    --horizontalNavHeight: 4rem;
+    --judoHeight: 0rem;
+    --sidebarMaxWidth: 50rem;
+    --sidebarMinHeight: 50rem;
+    --sidebarMinWidth: 30rem;
+    --verticalNavWidth: 0rem;
+    --videoWidth: 0rem;
+    padding: calc(var(--gutter) + var(--judoHeight) + var(--boardTopGutter) + var(--horizontalNavHeight)) var(--gutter) var(--gutter) calc(var(--verticalNavWidth) + var(--gutterBoardToNav));
+}
+
+.peace{
+  background-size: 100%;
+  cursor: pointer;
+  cursor: grab;
+  cursor: -webkit-grab;
+  height: 62.5px;
+  overflow: hidden;
+  position: absolute;
+  touch-action: none;
+  width: 62.5px;
+  will-change: transform;
+  background-size: cover;
+  z-index: 1;
+}
+
+.Board{
+  grid-column: board;
+  height: 500px;
+  padding-bottom: 0;
+  width: 500px;
+  background-image: url('https://images.chesscomfiles.com/chess-themes/boards/brown/150.png');
+  background-size: cover;
+  margin: 0px auto;
+}
+
+body{
+  background-color: #151515;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.bottom{
+  top: 588px;
+  background: #644c38;
+  width: 500px;
+  height: 40px;
+}
+
+.bottom p{
+  position: absolute;
+  color: #f0d9b5;
+  left: 70px;
+  top: -8px;
+  user-select: none;
+  margin-left: 4%;
+}
+
+.left{
+  top: 50px;
+  background: #644c38;
+  width: 40px;
+  height: 578px;
+  margin-left: -40px;
+}
+
+.left p{
+  position: absolute;
+  color: #f0d9b5;
+  top: 110px;
+  left: 13px;
+  user-select: none;
+  margin-left: 4%;
+  display: block;
+}
+
+.top{
+  top: 50px;
+}
+
+.right{
+  top: 50px;
+  background: #644c38;
+  width: 40px;
+  height: 578px;
+  margin-left: 500px;
+}
+
+.right p{
+  position: absolute;
+  color: #f0d9b5;
+  top: 110px;
+  left: 13px;
+  user-select: none;
+  margin-left: 4%;
+  display: block;
+}
+
+.highlight{
+  background-color: rgb(255, 255, 0) !important;
+  opacity: 0.5;
+  background-image: none;
+  z-index: 0;
+}
+
+.hint{
+  background: rgba(0,0,0,.40);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin: 20px;
+  z-index: 0;
+}
+
+.capture-hint{
+  background-color: transparent;
+  border: 5px solid rgba(0,0,0,.1);
+  z-index: 0;
+  width: 50.5px;
+  height: 52.5px;
+  margin-top: 0px;
+  margin-left: 0px;
+}
