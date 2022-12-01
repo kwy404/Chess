@@ -71,6 +71,7 @@ function App() {
     ])
     gameEnd.play()
     setMoves(0)
+    setHints([])
   }
 
   return (
