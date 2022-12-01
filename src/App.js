@@ -29,8 +29,8 @@ function App() {
   const [moves, setMoves] = useState(0);
 
   const [boardPeaces, setBoardPeaces] = useState([
-    [8,9,10,11,12,10,9,8],
-    [7,7,7,7,7,7,7,7],
+    [8,9,0,11,12,10,9,8],
+    [7,7,1,7,7,7,7,7],
     [0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],

@@ -1,4 +1,6 @@
 import calculateHints from '../helper/hintsCalculate';
+import promovate from '../helper/promovate';
+
 
 function Peace({
   x,
@@ -53,6 +55,7 @@ function Peace({
           setPeaceFocus(null);
           setHints([]);
           setMoves(moves + 1)
+          promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces})
           if(moves === 0){
             gameStart.play()
           } else{
@@ -88,6 +91,7 @@ function Peace({
           onClick={() => {
             setHints([]);
             movePeace();
+            promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces})
           }}
           style={{
             transform: `translateX(calc(62.5px * ${
