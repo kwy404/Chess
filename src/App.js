@@ -8,6 +8,7 @@ const capture = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/
 const ilegal = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/illegal.webm');
 const gameStart = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/game-start.webm');
 const gameEnd = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/game-end.webm');
+const promovateAudio = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/promote.webm')
 
 //p = peao
 //r = torre
@@ -97,6 +98,7 @@ function App() {
               gameStart={gameStart}
               moves={moves}
               setMoves={setMoves}
+              promovateAudio={promovateAudio}
               />
             </div>
           ))

@@ -20,7 +20,8 @@ function Peace({
   myPeaces,
   moves,
   setMoves,
-  gameStart
+  gameStart,
+  promovateAudio
 }) {
   const movePeace = () => {
     const oldBoardPeace = [...boardPeaces];
@@ -55,11 +56,11 @@ function Peace({
           setPeaceFocus(null);
           setHints([]);
           setMoves(moves + 1)
-          promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces})
+          promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces, promovateAudio})
           if(moves === 0){
             gameStart.play()
           } else{
-            capture.play();
+            capture.play()
           }
         }
       }
@@ -91,7 +92,7 @@ function Peace({
           onClick={() => {
             setHints([]);
             movePeace();
-            promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces})
+            promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces, promovateAudio})
           }}
           style={{
             transform: `translateX(calc(62.5px * ${
