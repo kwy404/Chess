@@ -16,6 +16,9 @@ function Peace({
   capture,
   ilegal,
   myPeaces,
+  moves,
+  setMoves,
+  gameStart
 }) {
   const movePeace = () => {
     const oldBoardPeace = [...boardPeaces];
@@ -27,7 +30,13 @@ function Peace({
       setBoardPeaces(oldBoardPeace);
       setPeaceFocus(null);
       setHints([]);
-      moveSelf.play();
+      setMoves(moves + 1)
+      
+      if(moves === 0){
+        gameStart.play()
+      } else{
+        moveSelf.play();
+      }
     }
   };
 
@@ -43,7 +52,12 @@ function Peace({
           setBoardPeaces(oldBoardPeace);
           setPeaceFocus(null);
           setHints([]);
-          capture.play();
+          setMoves(moves + 1)
+          if(moves === 0){
+            gameStart.play()
+          } else{
+            capture.play();
+          }
         }
       }
     } catch (error) {

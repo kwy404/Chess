@@ -6,6 +6,8 @@ import './App.css';
 const moveSelf = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/move-self.webm');
 const capture = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/capture.webm');
 const ilegal = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/illegal.webm');
+const gameStart = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/game-start.webm');
+const gameEnd = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/game-end.webm');
 
 //p = peao
 //r = torre
@@ -20,17 +22,20 @@ const ilegal = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_
 const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 function App() {
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
   const [peaceFocus, setPeaceFocus] = useState(null);
   const [hints, setHints] = useState([]);
+  const [moves, setMoves] = useState(0);
 
   const [boardPeaces, setBoardPeaces] = useState([
     [8,9,10,11,12,10,9,8],
-    [7,7,0,7,7,7,7,7],
+    [7,7,7,7,7,7,7,7],
     [0,0,0,0,0,0,0,0],
-    [0,0,0,3,0,0,0,0],
-    [0,2,0,0,0,7,0,0],
-    [0,0,7,0,0,0,0,0],
-    [0,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [1,1,1,1,1,1,1,1],
     [2,3,4,5,6,4,3,2]
   ])
 
@@ -51,6 +56,21 @@ function App() {
     'bq',
     'bk'
   ]
+
+  const newGame = () => {
+    setBoardPeaces([
+      [8,9,10,11,12,10,9,8],
+      [7,7,7,7,7,7,7,7],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [1,1,1,1,1,1,1,1],
+      [2,3,4,5,6,4,3,2]
+    ])
+    gameEnd.play()
+    setMoves(0)
+  }
 
   return (
     <div className="App">
@@ -74,6 +94,9 @@ function App() {
               capture={capture}
               ilegal={ilegal}
               myPeaces={myPeaces}
+              gameStart={gameStart}
+              moves={moves}
+              setMoves={setMoves}
               />
             </div>
           ))
@@ -97,6 +120,11 @@ function App() {
             className={`hint peace square-${hint.y}${hint.x}`}></div>
           </>
         ))) }
+        <button
+        onClick={() => {
+          newGame()
+        }}
+        >Novo jogo</button> 
       </Board>
     </div>
   );
