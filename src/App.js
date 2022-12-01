@@ -72,6 +72,7 @@ function App() {
     gameEnd.play()
     setMoves(0)
     setHints([])
+    setPeaceFocus(null)
   }
 
   return (
