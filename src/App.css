@@ -155,7 +155,6 @@ body{
   height: 15px;
   margin: 25px;
   z-index: 0;
-  display: none;
 }
 
 .capture-hint{
@@ -166,5 +165,4 @@ body{
   height: 52.5px;
   margin-top: 0px;
   margin-left: 0px;
-  display: none;
 }

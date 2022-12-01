@@ -22,8 +22,7 @@ function Peace({
     const foundPosition = hints.find((e) => e.x === x && e.y === y);
     if (foundPosition) {
       const focusPeace = peaceFocus.split(":");
-      oldBoardPeace[y - 1][x - 1] =
-        oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
+      oldBoardPeace[y - 1][x - 1] = oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
       oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1] = 0;
       setBoardPeaces(oldBoardPeace);
       setPeaceFocus(null);
@@ -38,9 +37,8 @@ function Peace({
       const foundPosition = hints.find((e) => e.x === x && e.y === y);
       const focusPeace = peaceFocus.split(":");
       if (foundPosition) {
-        if (!myPeaces.find((e) => e === oldBoardPeace[y - 1][x - 1])) {
-          oldBoardPeace[y - 1][x - 1] =
-            oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
+        if (!myPeaces.find((e) => e === oldBoardPeace[y - 1][x - 1]) && oldBoardPeace[y - 1][x - 1] !== 12) {
+          oldBoardPeace[y - 1][x - 1] = oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
           oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1] = 0;
           setBoardPeaces(oldBoardPeace);
           setPeaceFocus(null);
@@ -74,6 +72,7 @@ function Peace({
       ) : (
         <div
           onClick={() => {
+            setHints([]);
             movePeace();
           }}
           style={{
