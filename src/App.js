@@ -110,7 +110,7 @@ function App() {
 
         </div> }
         {/* { hint } */}
-        { hints.map((hint => hint.x > 0 && hint.x < 8 && (
+        { hints.map((hint => hint.x > 0 && hint.x < 7 && (
           <>
             <div
             key={`${hint.y}:${hint.x}`}
