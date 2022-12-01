@@ -5,7 +5,9 @@ const peao = ({boardPeaces, myPeaces, x, y, newHints, objectHint}) => {
           !myPeaces.find((e) => e === boardPeaces[y - 2][x - 2])
         ) {
           if (x > 1) {
-            newHints.push(objectHint(y - 1, x - 1, true));
+            if(y < 8){
+              newHints.push(objectHint(y - 1, x - 1, true));
+            }
           }
         }
         if (
