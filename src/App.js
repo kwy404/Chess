@@ -28,9 +28,9 @@ function App() {
     [7,7,0,7,7,7,7,7],
     [0,0,0,0,0,0,0,0],
     [0,0,0,3,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [7,0,7,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1],
+    [0,2,0,0,0,7,0,0],
+    [0,0,7,0,0,0,0,0],
+    [0,1,1,1,1,1,1,1],
     [2,3,4,5,6,4,3,2]
   ])
 
@@ -89,21 +89,12 @@ function App() {
         {/* { hint } */}
         { hints.map((hint => (
           <>
-          { !hint.canKill ?
             <div
             key={`${hint.y}:${hint.x}`}
             style={{
               transform: `translateX(calc(62.5px * ${hint.x - 1})) translateY(calc(62.5px * ${hint.y - 1}))`
             }}
-            className={`hint peace square-${hint.y}${hint.x}`}>
-            </div> : <div
-            key={`${hint.y}:${hint.x}`}
-            style={{
-              transform: `translateX(calc(62.5px * ${hint.x - 1})) translateY(calc(62.5px * ${hint.y - 1}))`
-            }}
-            className={`hint capture-hint peace square-${hint.y}${hint.x}`}>
-
-            </div> }
+            className={`hint peace square-${hint.y}${hint.x}`}></div>
           </>
         ))) }
       </Board>
