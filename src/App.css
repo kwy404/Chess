@@ -181,3 +181,8 @@ button{
 button:hover{
   background: #5f51b5;
 }
+
+.highlight--red{
+  background-color: #c7513d !important;
+  z-index: 2;
+}

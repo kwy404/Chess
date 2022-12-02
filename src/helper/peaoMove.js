@@ -1,4 +1,4 @@
-const peao = ({boardPeaces, myPeaces, x, y, newHints, objectHint}) => {
+const peao = ({boardPeaces, myPeaces, x, y, newHints, objectHint, bot}) => {
     if (boardPeaces[y - 1][x - 1] === 1) {
         if (
           boardPeaces[y - 2][x - 2] !== 0 &&
@@ -33,6 +33,7 @@ const peao = ({boardPeaces, myPeaces, x, y, newHints, objectHint}) => {
           }
         }
       }
+      return newHints;
 }
 
 export default peao;

@@ -1,6 +1,10 @@
 function Board({children, alpha}) {
   return (
-    <div className="Board">
+    <div 
+    onAuxClick={(e) => {
+      e.preventDefault()
+    }}
+    className="Board">
       { children }
       <div className="absolute bottom">
         { alpha.map((a, x) => (

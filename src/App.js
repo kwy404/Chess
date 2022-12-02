@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Board from './components/Board';
 import Peace from './components/Peace';
 import './App.css';
@@ -28,6 +28,9 @@ function App() {
   const [peaceFocus, setPeaceFocus] = useState(null);
   const [hints, setHints] = useState([]);
   const [moves, setMoves] = useState(0);
+  const [moveList, setMoveList] = useState([]);
+  const [hightLightRed, setHightlightRed] = useState([])
+  const [dragStop, setDragStop] = useState(false)
 
   const [boardPeaces, setBoardPeaces] = useState([
     [8,9,10,11,12,10,9,8],
@@ -75,6 +78,10 @@ function App() {
     setPeaceFocus(null)
   }
 
+  useEffect(() => {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  }, [])
+
   return (
     <div className="App">
       <Board alpha={alpha}>
@@ -101,6 +108,10 @@ function App() {
               moves={moves}
               setMoves={setMoves}
               promovateAudio={promovateAudio}
+              hightLightRed={hightLightRed}
+              setHightlightRed={setHightlightRed}
+              dragStop={dragStop}
+              setDragStop={setDragStop}
               />
             </div>
           ))
@@ -113,6 +124,17 @@ function App() {
         className={`highlight square-${peaceFocus.split(':')[0]}${peaceFocus.split(':')[1]}  peace`}>
 
         </div> }
+        {/* { highlight--red } */}
+        { hightLightRed.map((hint => (
+          <>
+            <div
+            key={`${hint.y}:${hint.x}`}
+            style={{
+              transform: `translateX(calc(62.5px * ${hint.x - 1})) translateY(calc(62.5px * ${hint.y - 1}))`
+            }}
+            className={`highlight highlight--red peace square-${hint.y}${hint.x}`}></div>
+          </>
+        ))) }
         {/* { hint } */}
         { hints.map((hint => hint.x > 0 && hint.x <= 8 && hint.y <= 8 && (
           <>
