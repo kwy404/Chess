@@ -30,7 +30,7 @@ function Peace({
   const movePeace = () => {
     const oldBoardPeace = [...boardPeaces];
     const foundPosition = hints.find((e) => e.x === x && e.y === y);
-    if (foundPosition) {
+    if (foundPosition && peaceFocus) {
       const focusPeace = peaceFocus.split(":");
       oldBoardPeace[y - 1][x - 1] = oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
       oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1] = 0;
@@ -44,7 +44,12 @@ function Peace({
         moveSelf.play();
       }
     } else{
-      ilegalMove()
+      if(peaceFocus){
+        const focusPeace = peaceFocus.split(":");
+        if(focusPeace[1] !== y && focusPeace[0] !== x){
+          ilegalMove()
+        }
+      }
     }
   };
 
@@ -53,7 +58,7 @@ function Peace({
       const oldBoardPeace = [...boardPeaces];
       const foundPosition = hints.find((e) => e.x === x && e.y === y);
       const focusPeace = peaceFocus.split(":");
-      if (foundPosition) {
+      if (foundPosition && peaceFocus) {
         if (!myPeaces.find((e) => e === oldBoardPeace[y - 1][x - 1]) && oldBoardPeace[y - 1][x - 1] !== 12) {
           oldBoardPeace[y - 1][x - 1] = oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
           oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1] = 0;
@@ -69,7 +74,12 @@ function Peace({
           }
         }
       } else{
-        ilegalMove()
+        if(peaceFocus){
+          const focusPeace = peaceFocus.split(":");
+          if(focusPeace[1] !== y && focusPeace[0] !== x){
+            ilegalMove()
+          }
+        }
       }
     } catch (error) {
       

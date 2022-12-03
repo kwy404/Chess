@@ -23,8 +23,6 @@ const promovateAudio = new Audio('https://images.chesscomfiles.com/chess-themes/
 const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 function App() {
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
   const [peaceFocus, setPeaceFocus] = useState(null);
   const [hints, setHints] = useState([]);
   const [moves, setMoves] = useState(0);
@@ -87,8 +85,8 @@ function App() {
       <Board alpha={alpha}>
         {boardPeaces.map((pace,y) => (
           pace.map((peace, x) => (
-            <div key={x + 1+':'+y + 1}>
               <Peace
+              key={x + 1+':'+y + 1}
               boardPeaces={boardPeaces}
               className={`peace square-${x + 1}${y + 1}`}
               blank={peace === 0}
@@ -113,7 +111,6 @@ function App() {
               dragStop={dragStop}
               setDragStop={setDragStop}
               />
-            </div>
           ))
         ))}
         {/* { highlight } */}
