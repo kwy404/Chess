@@ -85,7 +85,7 @@ function Peace({
   }
 
   return (
-    <div>
+    <>
       {!blank ? (
         <div
           onClick={() => {
@@ -105,7 +105,7 @@ function Peace({
           onDragCapture={() => {
             setDragStop(true)
           }}
-          onMouseOut={() => {
+          onMouseEnter={() => {
             if(dragStop){
               killPeace();
             }
@@ -131,7 +131,7 @@ function Peace({
             movePeace();
             promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces, promovateAudio})
           }}
-          onMouseOut={() => {
+          onMouseEnter={() => {
             if(dragStop){
               movePeace();
               promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces, promovateAudio})
@@ -148,11 +148,12 @@ function Peace({
             transform: `translateX(calc(62.5px * ${
               x - 1
             })) translateY(calc(62.5px * ${y - 1}))`,
+            zIndex: 30
           }}
           className={`peace blank square-${x}${y}`}
         />
       )}
-    </div>
+    </>
   );
 }
 
