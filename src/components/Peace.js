@@ -43,6 +43,8 @@ function Peace({
       } else{
         moveSelf.play();
       }
+    } else{
+      ilegalMove()
     }
   };
 
@@ -66,11 +68,20 @@ function Peace({
             capture.play()
           }
         }
+      } else{
+        ilegalMove()
       }
     } catch (error) {
       
     }
   };
+
+  const ilegalMove = () => {
+    ilegal.play()
+    setHightlightRed([])
+    setHints([]);
+    setPeaceFocus(null);
+  }
 
   const auxClickHighlight = () => {
     const oldHightLightRed = [...hightLightRed]
