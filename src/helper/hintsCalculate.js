@@ -13,7 +13,7 @@ const calculateHints = ({ boardPeaces, myPeaces, setHints, x, y }) => {
   const newHints = [];
 
   const peacesMap = {
-    1: () => {peao({ boardPeaces, myPeaces, setHints, x, y, newHints, objectHint })}, // sem movimento
+    1: () => {peao({ boardPeaces, myPeaces, setHints, x, y, newHints, objectHint })},
     2: () => rook({ boardPeaces, myPeaces, setHints, x, y, newHints, objectHint }),
     3: () => cavalo({ boardPeaces, myPeaces, setHints, x, y, newHints, objectHint }),
     4: () => bishop({ boardPeaces, myPeaces, setHints, x, y, newHints, objectHint }),
