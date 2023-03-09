@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Board from './components/Board';
 import Peace from './components/Peace';
+
 import './App.css';
 
 const moveSelf = new Audio('https://images.chesscomfiles.com/chess-themes/sounds/_WEBM_/default/move-self.webm');

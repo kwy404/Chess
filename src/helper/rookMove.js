@@ -38,7 +38,6 @@ const rook = ({boardPeaces, myPeaces, x, y, newHints, objectHint}) => {
             break;
         }
     }
-    console.log(newHints)
 }
 
 export default rook;

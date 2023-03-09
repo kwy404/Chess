@@ -1,5 +1,7 @@
 import calculateHints from '../helper/hintsCalculate';
 import promovate from '../helper/promovate';
+import ai from '../ai';
+
 
 
 function Peace({
@@ -28,6 +30,7 @@ function Peace({
   setDragStop
 }) {
   const movePeace = () => {
+    ai({ boardPeaces, p, setBoardPeaces, promovateAudio })
     const oldBoardPeace = [...boardPeaces];
     const foundPosition = hints.find((e) => e.x === x && e.y === y);
     if (foundPosition && peaceFocus) {
