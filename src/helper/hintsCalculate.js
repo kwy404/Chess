@@ -1,9 +1,9 @@
-import cavalo from "./cavaloMove";
-import peao from "./peaoMove";
-import rook from "./rookMove";
-import queen from "./queen";
-import bishop from "./bishop";
-import king from "./king";
+import cavalo from "./movements/cavaloMove";
+import peao from "./movements/peaoMove";
+import rook from "./movements/rookMove";
+import queen from "./movements/queenMove";
+import bishop from "./movements/bishopMove";
+import king from "./movements/kingMove";
 
 const objectHint = (newY, newX, canKill) => {
   return { x: newX, y: newY, canKill: canKill };

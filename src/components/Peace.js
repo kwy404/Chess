@@ -1,5 +1,6 @@
 import calculateHints from '../helper/hintsCalculate';
 import promovate from '../helper/promovate';
+import roque from '../helper/roque';
 import ai from '../ai';
 
 
@@ -62,6 +63,8 @@ function Peace({
       const foundPosition = hints.find((e) => e.x === x && e.y === y);
       const focusPeace = peaceFocus.split(":");
       if (foundPosition && peaceFocus) {
+        
+
         if (!myPeaces.find((e) => e === oldBoardPeace[y - 1][x - 1]) && oldBoardPeace[y - 1][x - 1] !== 12) {
           oldBoardPeace[y - 1][x - 1] = oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1];
           oldBoardPeace[focusPeace[1] - 1][focusPeace[0] - 1] = 0;
@@ -118,6 +121,14 @@ function Peace({
             setPeaceFocus(`${x}:${y}`);
             calculateHints({boardPeaces, myPeaces, setHints, x, y});
             killPeace();
+            try {
+              const focusPeace = peaceFocus.split(":");
+              if(focusPeace){
+                roque({boardPeaces, myPeaces, fromX: focusPeace[0], fromY: focusPeace[1], toX: x, toY: y, p, setBoardPeaces})
+              }
+            } catch (error) {
+              
+            }
           }}
           onDragStart={() => {
             setHightlightRed([])
@@ -154,6 +165,14 @@ function Peace({
             setHints([]);
             movePeace();
             promovate({boardPeaces, myPeaces, x, y, p, setBoardPeaces, promovateAudio})
+            try {
+              const focusPeace = peaceFocus.split(":");
+              if(focusPeace){
+                roque({boardPeaces, myPeaces, fromX: focusPeace[0], fromY: focusPeace[1], toX: x, toY: y, p, setBoardPeaces})
+              }
+            } catch (error) {
+              
+            }
           }}
           onMouseEnter={() => {
             if(dragStop){
